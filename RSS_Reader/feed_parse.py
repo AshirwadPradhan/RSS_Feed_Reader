@@ -41,22 +41,22 @@ def channel_details(feeds):
 			print('Channel Details:\n')
 
 		try:
-			print(d.feed.title)
+			print('Title: '+d.feed.title)
 		except AttributeError:
 			print('##Attribute Title Not Available')
 
 		try:
-			print(d.feed.link)
+			print('Link: '+d.feed.link)
 		except AttributeError:
 			print('##Attribute Link Not Available')
 
 		try:
-			print(d.feed.description)
+			print('Description: '+d.feed.description)
 		except AttributeError:
 			print('##Attribute Description Not Available')
 
 		try:
-			print(d.feed.updated)
+			print('Updated on: '+d.feed.updated)
 		except AttributeError:
 			print('##Attribute Updated Not Available')
 
@@ -74,11 +74,16 @@ def item_details(d):
 	Input: feeds
 	Output: post details in a channel
 	"""
-	for i in range(0,len(d)):
+	print("\n")
+	for i in range(0,len(d.entries)-1):
 		try:
-			print(d.entries[i].title)
+			print((d.entries[i].title).encode('utf-8'))
 		except AttributeError:
 			print('## Attribute Title Not Available')
+		try:
+			print("Author: "+d.entries[i].author)
+		except:
+			print('##Attribute Author Not Available')
 
 
 def driver():
