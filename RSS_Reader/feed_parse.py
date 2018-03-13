@@ -6,8 +6,19 @@ def link_container():
 	Input:
 	Output: links data
 	"""
-	links = ['https://www.reddit.com/r/Python/.rss', \
-			'https://www.reddit.com/r/MachineLearning/.rss']
+	try:
+		with open('links.txt', mode ='r') as f:
+
+			# links = ['https://www.reddit.com/r/Python/.rss', \
+			# 		'https://www.reddit.com/r/MachineLearning/.rss']
+			links=[]
+			lin = f.readlines()
+			for l in lin:
+				l = l[:-2]+'/.rss'
+				links.append(l)
+	except OSError:
+		print('Reading Permission Not Met')
+
 	return links
 
 def link_seg(links):
